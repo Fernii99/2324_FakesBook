@@ -5,7 +5,9 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const Container = styled.View`
     width: 100%;
-    padding: 50px 10px;
+    padding-top: 50px;
+    padding-bottom: 10px;
+    padding-horizontal: 10px;
     align-items:center;
     flex-direction:row;
     justify-content: space-between;
@@ -20,7 +22,7 @@ const Text = styled.Text`
 
 const Row = styled.View`
     flex-direction: row;
-    heigh: 90px;
+    heigh: 70px;
     align-items:center;
 `
 
@@ -36,7 +38,6 @@ const Button = styled.TouchableOpacity`
 const Menu = styled.TouchableOpacity`
     width: 42px;
     height: 42px;
-    margin-left: 16px;
     align-items: center;
     justify-content: center
 `
@@ -45,7 +46,9 @@ const Header = () => {
     return(
         <Container>
             <Row>
-                <MaterialCommunityIcons name="menu" size={25} color="black" ></MaterialCommunityIcons>
+                <Menu>
+                    <MaterialCommunityIcons name="menu" size={25} color="black" ></MaterialCommunityIcons>
+                </Menu>
                 <Text>Fakebook</Text>
             </Row>
             <Row>
