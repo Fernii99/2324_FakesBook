@@ -1,22 +1,24 @@
 import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
-import Avatar from './components/Avatar'
+import Avatar from './avatar'
 import {MaterialCommunityIcons} from '@expo/vector-icons' 
 import fakeUsers from '../data/fakeUsers' 
-import MainSeparator from './components/MainSeparator'
+import MainSeparator from './mainSeparator'
 
 
 const Container = styled.View`
     flex: 1;
+    background: #FFF;
 `
 const Header = styled.View`
-flex-direction: row;
-align-items: center;
-justify-content: space-between;
-height: 50px;
-margin-top:5px;
-padding: 0 10px;
+    
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    margin-top:5px;
+    padding: 0 10px;
 `
 
 const Row = styled.View` 
@@ -42,7 +44,7 @@ const PostContent = styled.Text`
     padding: 0 11px;
 `
 
-const Photo = styled. Image`
+const Photo = styled.Image`
     margin-top: 9px;
     width: 100%;
     height: 300px;
@@ -85,6 +87,7 @@ const FooterMenu = styled.View`
 `
 const Button = styled.TouchableOpacity`
     flex-direction: row;    
+    align-items: center;
 `
 
 const Icon = styled.View` 
@@ -97,7 +100,67 @@ const Text = styled.Text`
 `
 
 const Post = () => {
-    
+    return (
+        <>
+            {fakeUsers.map((user, i) => {
+                return(
+                    <Container key={i.toString()}>
+                        <Header>
+                            <Row>
+                                <Avatar source={user.source}/>
+                                <View style={{padding:10}}>
+                                    <User>{user.name}</User>
+                                    <Row>
+                                        <Time>{user.time}</Time>
+                                        <MaterialCommunityIcons name='circle-small' size={12} color='#747476' />
+                                        <MaterialCommunityIcons name='earth' size={12} color='#747476' />
+                                    </Row>
+                                </View>
+                            </Row>
+                            <MaterialCommunityIcons name="dots-horizontal" size={12} color='#747476' />
+                        </Header>
+
+                        <PostContent>{user.postContent}</PostContent>
+                        <Photo source={user.postImage}/>
+
+                        <Footer>
+                            <FooterCount>
+                                <Row>
+                                    <IconCount>
+                                        <MaterialCommunityIcons name='thumb-up-outline' size={12} color='#FFFFFF' /> 
+                                    </IconCount>
+                                    <TextCount>{user.likes}</TextCount>
+                                </Row>
+                            </FooterCount>
+                            <Separator/>
+                            <FooterMenu>
+                                <Button>
+                                    <Icon>
+                                        <MaterialCommunityIcons name='thumb-up-outline' size={20} color='#747476' />
+                                    </Icon>
+                                    <Text>Me gusta</Text>
+                                </Button>
+                                <Button>
+                                    <Icon>
+                                        <MaterialCommunityIcons name='comment-outline' size={20} color='#747476' />
+                                    </Icon>
+                                    <Text>Comentar</Text>
+                                </Button>
+                                <Button>
+                                    <Icon>
+                                        <MaterialCommunityIcons name='share-outline' size={20} color='#747476' />
+                                    </Icon>
+                                    <Text>Compartir</Text>  
+                                </Button>
+                            </FooterMenu>
+                        </Footer>
+
+                        <MainSeparator/>
+                    </Container>
+                )
+            })}
+        </>
+    )
 }
 
 export default Post
