@@ -21,9 +21,9 @@ const Home = () =>{
             <MainSeparator />
             <Users/>
             <MainSeparator/>
-            <Story/>
-            <MainSeparator/>
-            <Post/>
+            {/* <Story/> */}
+            {/* <MainSeparator/> */}
+            <Post/> 
         </ScrollView>
         </View>
     )
